@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="manifest" href="manifest.json" />
+	<link rel="icon" type="image/x-icon" href="image 2.png">
+	<meta name="theme-color" content="#ffffff" />
+	<meta name="mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta name="apple-mobile-web-app-title" content="Cola Eleitoral" />
+	<title>Cola Eleitoral</title>
+
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			margin: 0;
+			min-height: 100vh;
+			font-family: Arial, Helvetica, sans-serif;
+			background: #f5f5f5;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.container {
+			width: 100%;
+			max-width: 600px;
+			min-height: 100vh;
+			background: white;
+			text-align: center;
+		}
+
+		header {
+			background: #317d92;
+			padding: 45px 20px 35px;
+			position: relative;
+		}
+
+		header::after {
+			content: "";
+			position: absolute;
+			bottom: -10px;
+			left: 0;
+			width: 100%;
+			height: 20px;
+			background: radial-gradient(ellipse at center,
+					#8bc53f 60%,
+					transparent 61%);
+			background-size: 45px 20px;
+		}
+
+		h1 {
+			margin: 0;
+			color: #f5c400;
+			font-size: clamp(24px, 5vw, 34px);
+			font-weight: 800;
+			text-transform: uppercase;
+		}
+
+		h2 {
+			margin: 5px 0 0;
+			color: white;
+			font-size: 18px;
+		}
+
+		main {
+			padding: 35px 20px;
+		}
+
+		.cargo {
+			margin-bottom: 22px;
+		}
+
+		.cargo h3 {
+			margin: 0 0 8px;
+			font-size: 17px;
+			font-weight: 700;
+			text-transform: uppercase;
+			color: #222;
+		}
+
+		.inputs {
+			display: flex;
+			justify-content: center;
+			gap: 8px;
+		}
+
+		.numero {
+			width: 46px;
+			height: 48px;
+
+			border: 2px solid #333;
+			border-radius: 0;
+
+			text-align: center;
+			font-size: 25px;
+			font-weight: bold;
+
+			outline: none;
+			background: #fff;
+		}
+
+		.numero:focus {
+			border-color: #317d92;
+			box-shadow: 0 0 0 2px rgba(49, 125, 146, 0.2);
+		}
+
+		.acoes {
+			margin-top: 30px;
+		}
+
+		button {
+			border: none;
+			padding: 12px 20px;
+			background: #317d92;
+			color: white;
+			font-size: 15px;
+			font-weight: bold;
+			border-radius: 6px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			opacity: 0.9;
+		}
+
+		@media (max-width: 400px) {
+			.numero {
+				width: 40px;
+				height: 42px;
+				font-size: 22px;
+			}
+
+			.inputs {
+				gap: 5px;
+			}
+
+			.cargo h3 {
+				font-size: 15px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<header>
+			<h1>NO DIA 04/10, LEVE A COLA!</h1>
+			<h2>Anote os números de suas candidatas<br />ou candidatos aqui</h2>
+		</header>
+
+		<main>
+			<!-- DEPUTADO FEDERAL -->
+			<section class="cargo">
+				<h3>Deputada ou Deputado Federal</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<!-- DEPUTADO ESTADUAL -->
+			<section class="cargo">
+				<h3>Deputada ou Deputado Estadual</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<!-- SENADOR 1 -->
+			<section class="cargo">
+				<h3>Senadora ou Senador (1ª vaga)</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<!-- SENADOR 2 -->
+			<section class="cargo">
+				<h3>Senadora ou Senador (2ª vaga)</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<!-- GOVERNADOR -->
+			<section class="cargo">
+				<h3>Governadora ou Governador</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<!-- PRESIDENTE -->
+			<section class="cargo">
+				<h3>Presidente da República</h3>
+
+				<div class="inputs">
+					<input class="numero" maxlength="1" inputmode="numeric" />
+					<input class="numero" maxlength="1" inputmode="numeric" />
+				</div>
+			</section>
+
+			<div class="acoes">
+				<button type="button" id="limpar">Limpar números</button>
+			</div>
+		</main>
+	</div>
+
+	<script>
+		const inputs = document.querySelectorAll(".numero");
+
+		const STORAGE_KEY = "cola-eleitoral";
+
+		/*
+		 * Carrega os números salvos
+		 */
+		function carregarNumeros() {
+			const dados = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+			inputs.forEach((input, index) => {
+				input.value = dados[index] || "";
+			});
+		}
+
+		/*
+		 * Salva todos os números
+		 */
+		function salvarNumeros() {
+			const dados = Array.from(inputs).map((input) => input.value);
+
+			localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
+		}
+
+		/*
+		 * Aceita somente números
+		 */
+		inputs.forEach((input, index) => {
+			input.addEventListener("input", () => {
+				input.value = input.value.replace(/\D/g, "");
+
+				salvarNumeros();
+
+				/*
+				 * Se digitou um número,
+				 * vai para o próximo campo
+				 */
+				if (input.value && index < inputs.length - 1) {
+					inputs[index + 1].focus();
+				}
+			});
+
+			/*
+			 * Backspace volta para o campo anterior
+			 */
+			input.addEventListener("keydown", (event) => {
+				if (event.key === "Backspace" && input.value === "" && index > 0) {
+					inputs[index - 1].focus();
+				}
+			});
+		});
+
+		/*
+		 * Limpar todos os números
+		 */
+		document.querySelector("#limpar").addEventListener("click", () => {
+			const confirmar = confirm("Deseja apagar todos os números?");
+
+			if (!confirmar) {
+				return;
+			}
+
+			inputs.forEach((input) => {
+				input.value = "";
+			});
+
+			localStorage.removeItem(STORAGE_KEY);
+
+			inputs[0].focus();
+		});
+
+		/*
+		 * Inicializa
+		 */
+		carregarNumeros();
+	</script>
+
+	<script>
+		if ("serviceWorker" in navigator) {
+			window.addEventListener("load", () => {
+				navigator.serviceWorker
+					.register("./sw.js")
+					.then(() => console.log("PWA pronta!"))
+					.catch((error) => console.error("Erro ao registrar PWA:", error));
+			});
+		}
+	</script>
+</body>
+
+</html>
