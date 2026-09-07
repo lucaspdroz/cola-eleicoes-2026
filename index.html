@@ -172,19 +172,88 @@
 				// deste cargo. Assim, se houver campos restantes, o usuário
 				// pode continuar digitando imediatamente.
 				const proximoDisponivel = camposDoCargo.find(
-    (campo) => campo.value === ""
-);
+					(campo) => campo.value === ""
+				);
 
-if (proximoDisponivel) {
-    proximoDisponivel.focus();
-} else {
-    camposDoCargo[camposDoCargo.length - 1].focus();
-}
+				if (proximoDisponivel) {
+					proximoDisponivel.focus();
+				} else {
+					camposDoCargo[camposDoCargo.length - 1].focus();
+				}
 			});
 
 			input.addEventListener("keydown", (event) => {
-				if (event.key === "Backspace" && input.value === "" && index > 0) {
-					inputs[index - 1].focus();
+				const cargoAtual = input.closest(".cargo");
+				const camposAtuais = Array.from(
+					cargoAtual.querySelectorAll(".numero")
+				);
+
+				const posicao = camposAtuais.indexOf(input);
+
+				// ← Esquerda
+				if (event.key === "ArrowLeft") {
+					event.preventDefault();
+
+					if (posicao > 0) {
+						camposAtuais[posicao - 1].focus();
+					}
+
+					return;
+				}
+
+				// → Direita
+				if (event.key === "ArrowRight") {
+					event.preventDefault();
+
+					if (posicao < camposAtuais.length - 1) {
+						camposAtuais[posicao + 1].focus();
+					}
+
+					return;
+				}
+
+				// ↑ Grupo acima
+				if (event.key === "ArrowUp") {
+					event.preventDefault();
+
+					const cargoAnterior = cargoAtual.previousElementSibling;
+
+					if (cargoAnterior?.classList.contains("cargo")) {
+						const camposAcima = cargoAnterior.querySelectorAll(".numero");
+
+						if (camposAcima[posicao]) {
+							camposAcima[posicao].focus();
+						}
+					}
+
+					return;
+				}
+
+				// ↓ Grupo abaixo
+				if (event.key === "ArrowDown") {
+					event.preventDefault();
+
+					const cargoProximo = cargoAtual.nextElementSibling;
+
+					if (cargoProximo?.classList.contains("cargo")) {
+						const camposAbaixo = cargoProximo.querySelectorAll(".numero");
+
+						if (camposAbaixo[posicao]) {
+							camposAbaixo[posicao].focus();
+						}
+					}
+
+					return;
+				}
+
+				// Backspace
+				if (
+					event.key === "Backspace" &&
+					input.value === "" &&
+					posicao > 0
+				) {
+					event.preventDefault();
+					camposAtuais[posicao - 1].focus();
 				}
 			});
 		});
