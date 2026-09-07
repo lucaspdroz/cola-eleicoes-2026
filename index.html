@@ -136,6 +136,52 @@
 			/*
 			 * Backspace volta para o campo anterior
 			 */
+			/*
+			 * Cola um número inteiro diretamente nos campos do cargo.
+			 * Ex.: ao selecionar o primeiro campo do Senador e colar
+			 * "123", cada dígito vai para um input: 1 | 2 | 3.
+			 */
+			input.addEventListener("paste", (event) => {
+				event.preventDefault();
+
+				const texto = (event.clipboardData || window.clipboardData)
+					.getData("text")
+					.replace(/\D/g, "");
+
+				if (!texto) {
+					return;
+				}
+
+				// Trabalha somente dentro do cargo atual.
+				const camposDoCargo = Array.from(
+					input.closest(".inputs").querySelectorAll(".numero")
+				);
+
+				const posicao = camposDoCargo.indexOf(input);
+
+				// Preenche a partir do campo selecionado.
+				const digitos = texto.slice(0, camposDoCargo.length - posicao);
+
+				digitos.split("").forEach((digito, offset) => {
+					camposDoCargo[posicao + offset].value = digito;
+				});
+
+				salvarNumeros();
+
+				// Depois da colagem, o foco vai para o primeiro campo vazio
+				// deste cargo. Assim, se houver campos restantes, o usuário
+				// pode continuar digitando imediatamente.
+				const proximoDisponivel = camposDoCargo.find(
+    (campo) => campo.value === ""
+);
+
+if (proximoDisponivel) {
+    proximoDisponivel.focus();
+} else {
+    camposDoCargo[camposDoCargo.length - 1].focus();
+}
+			});
+
 			input.addEventListener("keydown", (event) => {
 				if (event.key === "Backspace" && input.value === "" && index > 0) {
 					inputs[index - 1].focus();
